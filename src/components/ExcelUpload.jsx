@@ -36,14 +36,16 @@ const ExcelUpload = () => {
       await nowDate.setMonth(nowDate.getMonth() - 6);
 
       extractedData.forEach((arr) => {
-        if (nowDate <= new Date(arr[4])) {
-          arr[3] == "buluo"
-            ? setBlData((prevBlData) => [...prevBlData, arr])
-            : arr[3] == "wpk"
-            ? setWpkData((prevBlData) => [...prevBlData, arr])
-            : arr[3] == "pkw"
-            ? setPkwData((prevBlData) => [...prevBlData, arr])
-            : setWptgData((prevBlData) => [...prevBlData, arr]);
+        if (arr[8] >= 20) {
+          if (nowDate <= new Date(arr[4])) {
+            arr[3] == "buluo"
+              ? setBlData((prevBlData) => [...prevBlData, arr])
+              : arr[3] == "wpk"
+              ? setWpkData((prevBlData) => [...prevBlData, arr])
+              : arr[3] == "pkw"
+              ? setPkwData((prevBlData) => [...prevBlData, arr])
+              : setWptgData((prevBlData) => [...prevBlData, arr]);
+          }
         }
       });
     }
